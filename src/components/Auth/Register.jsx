@@ -1,13 +1,14 @@
 // src/pages/Register.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { register } from "../../services/authService"; // Ajusta la ruta
+import { register } from "../../services/authService";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -49,14 +50,23 @@ const Register = () => {
         </div>
         <div>
           <label htmlFor="password" className="block text-sm font-medium">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded"
-            required
-          />
+          <div className="relative">
+            <input
+              type={showPassword ? 'text' : 'password'} // Alternar entre text y password
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)} // Alternar estado de la contraseña
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm"
+            >
+              {showPassword ? 'Ocultar' : 'Mostrar'} {/* Texto del botón */}
+            </button>
+          </div>
         </div>
         <button
           type="submit"
