@@ -17,7 +17,10 @@ const Navbar = () => {
                     <Link to="/products" className="text-white hover:text-gray-400">Productos</Link>
                     <Link to="/about" className="text-white hover:text-gray-400">Acerca de</Link>
                     <Link to="/contact" className="text-white hover:text-gray-400">Contacto</Link>
-                    
+                    <Link to="/categories" className="text-white hover:text-gray-400">Categorias</Link>
+                    <Link to="/orders" className="text-white hover:text-gray-400">Order</Link>
+                    <Link to="/checkout" className="text-white hover:text-gray-400">Payments</Link>
+
                 </div>
 
                 {/* Buscar */}

@@ -3,11 +3,8 @@ import React from 'react';
 
 const AddressItem = ({ address }) => {
   return (
-    <div className="border p-4 mb-4 rounded">
-      <p><strong>Dirección:</strong> {address.street}</p>
-      <p><strong>Ciudad:</strong> {address.city}</p>
-      <p><strong>Estado:</strong> {address.state}</p>
-      <p><strong>Código Postal:</strong> {address.zip}</p>
+    <div className="p-4 border border-gray-300 rounded-lg">
+      <p>{address.address}</p>
     </div>
   );
 };
