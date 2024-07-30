@@ -1,25 +1,16 @@
-// src/components/Product/FeaturedProducts.jsx
-import React from "react";
-import ProductItem from "./ProductItem";
+import React from 'react';
 
-const products = [
-  { id: 1, name: "Producto 1", price: 100, image: "link_to_image" },
-  { id: 2, name: "Producto 2", price: 200, image: "link_to_image" },
-  { id: 3, name: "Producto 3", price: 300, image: "link_to_image" },
-  // Agrega más productos destacados según sea necesario
-];
-
-const FeaturedProducts = () => {
+const ProductItem = ({ product }) => {
   return (
-    <div className="container mx-auto py-8">
-      <h2 className="text-2xl font-bold mb-4">Productos Destacados</h2>
-      <div className="grid grid-cols-3 gap-4">
-        {products.map(product => (
-          <ProductItem key={product.id} product={product} />
-        ))}
-      </div>
+    <div className="border rounded-lg p-4 shadow-md">
+      <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-md" />
+      <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
+      <p className="text-lg font-bold mb-4">${product.price}</p>
+      <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+        Ver detalles
+      </button>
     </div>
   );
 };
 
-export default FeaturedProducts;
+export default ProductItem;
