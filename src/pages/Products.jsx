@@ -1,21 +1,39 @@
-import React from 'react';
-import ProductItem from '../components/Product/ProductItem';
-
-// Simula una lista de productos
-const products = [
-  { id: 1, name: 'Producto 1', price: 100, image: 'link_to_image_1' },
-  { id: 2, name: 'Producto 2', price: 200, image: 'link_to_image_2' },
-  { id: 3, name: 'Producto 3', price: 300, image: 'link_to_image_3' },
-  // Puedes agregar más productos si lo deseas
-];
+// src/pages/Products.jsx
+import React, { useEffect, useState } from 'react';
+import { getProducts } from '../services/productService';
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productsData = await getProducts();
+        setProducts(productsData);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6">Productos</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {products.map(product => (
-          <ProductItem key={product.id} product={product} />
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Products</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="border p-4 rounded-lg hover:shadow-lg transition-shadow duration-300"
+          >
+            <h2 className="text-xl font-semibold">{product.name}</h2>
+            <p className="text-gray-700">{product.description}</p>
+            <p className="text-gray-900 font-bold">${product.price}</p>
+            <button className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">
+              Añadir al carrito
+            </button>
+          </div>
         ))}
       </div>
     </div>
