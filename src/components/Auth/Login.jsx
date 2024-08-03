@@ -15,11 +15,11 @@ const Login = () => {
     setError('');
 
     try {
-      const data = await login(email, password);
-      localStorage.setItem('token', data.token);
-      navigate('/profile');
+      const data = await login(email, password); // Llamada al servicio de login
+      localStorage.setItem('token', data.token); // Almacenar token en localStorage
+      navigate('/profile'); // Redirigir a perfil
     } catch (err) {
-      setError(err.message || 'Credenciales incorrectas');
+      setError(err.message || 'Credenciales incorrectas'); // Manejo de errores
     }
   };
 
@@ -43,7 +43,7 @@ const Login = () => {
           <label htmlFor="password" className="block text-sm font-medium">Contraseña</label>
           <div className="relative">
             <input
-              type={showPassword ? 'text' : 'password'} // Alternar entre text y password
+              type={showPassword ? 'text' : 'password'} // Alternar entre texto y contraseña
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -54,8 +54,9 @@ const Login = () => {
               type="button"
               onClick={() => setShowPassword(!showPassword)} // Alternar estado de la contraseña
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm"
+              aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'} // Etiqueta accesible
             >
-              {showPassword ? 'Ocultar' : 'Mostrar'} {/* Texto del botón */}
+              {showPassword ? 'Ocultar' : 'Mostrar'}
             </button>
           </div>
         </div>
@@ -67,7 +68,7 @@ const Login = () => {
         </button>
         <p className="text-center mt-4">
           ¿No tienes una cuenta?{' '}
-          <a href="/register" className="text-blue-500 hover:underline">Crea tu cuenta shopDB</a>
+          <a href="/register" className="text-blue-500 hover:underline">Crea tu cuenta</a>
         </p>
       </form>
     </div>

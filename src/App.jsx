@@ -39,7 +39,6 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/addresses" element={<Addresses />} />
             <Route path="/payments" element={<PaymentList />} />
-
             <Route path="/categories" element={<Categories />} /> {/* Añade la ruta para categorías */}
             <Route path="/login" element={<Login />} />  {/* Ruta para login */}
             <Route path="/register" element={<Register />} />  {/* Ruta para registro */}
